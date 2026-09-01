@@ -1,0 +1,51 @@
+openapi: 3.0.3
+
+info:
+  title: Digital Banking Profile API
+  version: 1.0.0
+  description: API for retrieving digital banking profile information.
+
+paths:
+  /profiles/{personSerial}:
+    get:
+      summary: Get profile
+      operationId: getProfile
+
+      parameters:
+        - name: personSerial
+          in: path
+          required: true
+          schema:
+            type: string
+
+        - name: X-Correlation-ID
+          in: header
+          required: false
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: Profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+
+        "404":
+          description: Profile not found
+
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        personSerial:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
