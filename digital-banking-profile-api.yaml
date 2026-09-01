@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Digital Banking Profile API
-  version: 1.0.0
+  version: 1.1.0
   description: API for retrieving digital banking profile information.
 
 paths:
@@ -49,3 +49,7 @@ components:
         email:
           type: string
           format: email
+
+        phoneNumber:
+          type: string
+          example: "7175551234"
